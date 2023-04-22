@@ -27,7 +27,7 @@ DNS3=202.106.0.20 #北京的DNS。
 # /etc/init.d/network restart  红帽5、6里面的。
 ```
 
-![image-20191116135101705](D:\图片\typora\image-20191116135101705.png)
+![image-20191116135101705](https://github.com/Asuka-EVA/Linux/blob/main/network%20management/assets/image-20191116135101705.png?raw=true)
 
 ```shell
 编辑DNS配置文件设置DNS
@@ -52,7 +52,7 @@ ONBOOT="yes"
 [root@linux-server ~]# systemctl restart network
 ```
 
-![image-20191116135525810](D:\图片\typora\image-20191116135525810.png)
+![image-20191116135525810](https://github.com/Asuka-EVA/Linux/blob/main/network%20management/assets/image-20191116135525810.png?raw=true)
 
 # Configure local parsing
 
@@ -64,7 +64,7 @@ ONBOOT="yes"
 192.168.246.130 soso666 soso   #添加解析
 ```
 
-![image-20191116161635272](D:\图片\typora\image-20191116161635272.png)
+![image-20191116161635272](https://github.com/Asuka-EVA/Linux/blob/main/network%20management/assets/image-20191116161635272.png?raw=true)
 
 # modify network card
 
@@ -85,6 +85,6 @@ GRUB_CMDLINE_LINUX="...... net.ifnames=0" #告诉系统关闭原来命名功能
 [root@linux-server ~]# cd /etc/sysconfig/network-scripts/
 ```
 
-![image-20191130140057368](D:\图片\typora\image-20191130140057368.png)
+![image-20191130140057368](https://github.com/Asuka-EVA/Linux/blob/main/network%20management/assets/image-20191130140057368.png?raw=true)
 
-![image-20191205144539217](D:\图片\typora\image-20191205144539217.png)
+![image-20191205144539217](https://github.com/Asuka-EVA/Linux/blob/main/network%20management/assets/image-20191205144539217.png?raw=true)
