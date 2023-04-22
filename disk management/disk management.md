@@ -99,7 +99,7 @@ tmpfs                   tmpfs     199M     0  199M   0% /run/user/0
 第6列:是否检查文件系统：0 不检查
 ```
 
-![image-20191108154554145](D:\桌面\disk management\assets\image-20191108154554145.png)
+![image-20191108154554145](https://github.com/Asuka-EVA/Linux/blob/main/disk%20management/assets/image-20191108154554145.png)
 
 ```shell
 [root@qfedu.com ~]# mount -a #自动挂载
@@ -121,7 +121,7 @@ xfs格式
 [root@qfedu.com ~]# vim /etc/rc.d/rc.local #将挂载命令直接写到文件中
 ```
 
-![image-20191108155316602](D:\桌面\disk management\assets\image-20191108155316602.png)
+![image-20191108155316602](https://github.com/Asuka-EVA/Linux/blob/main/disk%20management/assets/image-20191108155316602.png)
 
 ```shell
 [root@qfedu.com ~]# chmod +x /etc/rc.d/rc.local #添加执行权限
