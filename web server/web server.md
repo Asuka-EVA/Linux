@@ -64,7 +64,7 @@ DirectoryIndex index.html      		# 定义主页文件，当访问到网站目录
 [root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
-![image-20200806202746369](D:\图片\typora\image-20200806202746369.png)
+![image-20200806202746369](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806202746369.png?raw=true)
 
 ```shell
 [root@qfedu.com ~]# systemctl restart httpd
@@ -75,13 +75,13 @@ DirectoryIndex index.html      		# 定义主页文件，当访问到网站目录
 [root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
-![image-20200806210039708](D:\图片\typora\image-20200806210039708.png)
+![image-20200806210039708](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806210039708.png?raw=true)
 
 ```shell
 [root@qfedu.com ~]# systemctl restart httpd
 ```
 
-![image-20200806203546116](D:\图片\typora\image-20200806203546116.png)
+![image-20200806203546116](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806203546116.png?raw=true)
 
 ```shell
 [root@test ~]# curl -I http://192.168.153.144  #用另外一台机器测试访问成功
@@ -110,13 +110,13 @@ Content-Type: text/html; charset=UTF-8
 [root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
-![image-20200806205725058](D:\图片\typora\image-20200806205725058.png)
+![image-20200806205725058](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806205725058.png?raw=true)
 
 ```shell
 [root@qfedu.com ~]# systemctl restart httpd
 ```
 
-![image-20200806203546116](D:\图片\typora\image-20200806203546116-16816495535891.png)
+![image-20200806203546116](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806203546116-16816495535891.png?raw=true)
 
 ```shell
 [root@test ~]# curl -I http://192.168.153.144
@@ -138,7 +138,7 @@ Content-Type: text/html; charset=iso-8859-1
 [root@qfedu.com ~]# systemctl restart httpd      #重启服务
 ```
 
-![image-20200806204634696](D:\图片\typora\image-20200806204634696.png)
+![image-20200806204634696](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806204634696.png?raw=true)
 
 ## virtual host
 
@@ -192,7 +192,7 @@ ServerName test.soso666.com
 在wind电脑上面打开C:\Windows\System32\drivers\etc\hosts文件。可以用管理员身份打开
 ```
 
-![image-20200806211348899](D:\图片\typora\image-20200806211348899.png)
+![image-20200806211348899](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211348899.png?raw=true)
 
 ```shell
 测试访问
