@@ -31,7 +31,7 @@ root_squash： 对于使用分享目录的使用者如果是root用户，那么�
 no_root_squash：使用分享目录的使用者，如果是 root 的话，那么对于这个分享的目录来说，他就具有 root 的权限。
 ```
 
-![image-20191116194232117](D:\图片\typora\image-20191116194232117.png)
+![image-20191116194232117](https://github.com/Asuka-EVA/Linux/blob/main/file%20server/assets/image-20191116194232117.png?raw=true)
 
 ```shell
 [root@nfs-server ~]# systemctl restart nfs-server #重启服务。
@@ -108,7 +108,7 @@ drwxr-xr-x. 2 ftp ftp 22 Aug  3 03:15 pub
 anon_umask=000  #匿名用户上传下载目录权限掩码
 ```
 
-![image-20200802200151521](D:\图片\typora\image-20200802200151521.png)
+![image-20200802200151521](https://github.com/Asuka-EVA/Linux/blob/main/file%20server/assets/image-20200802200151521.png?raw=true)
 
 ```shell
 35 anon_umask=000
@@ -185,7 +185,7 @@ local_root=/home/zhangsan       # 设置本地用户的FTP根目录，一般为�
 local_max_rate=0                # 限制最大传输速率（字节/秒）0为无限制
 ```
 
-![image-20200802205810530](D:\图片\typora\image-20200802205810530.png)
+![image-20200802205810530](https://github.com/Asuka-EVA/Linux/blob/main/file%20server/assets/image-20200802205810530.png?raw=true)
 
 ```shell
 重启vsftpd
