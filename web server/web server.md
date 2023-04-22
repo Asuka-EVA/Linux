@@ -198,14 +198,14 @@ ServerName test.soso666.com
 测试访问
 ```
 
-![image-20200806211329944](D:\图片\typora\image-20200806211329944.png)
+![image-20200806211329944](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211329944.png?raw=true)
 
 ```shell
 2、基于端口
 [root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf  ---添加
 ```
 
-![image-20200806210650822](D:\图片\typora\image-20200806210650822.png)
+![image-20200806210650822](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806210650822.png?raw=true)
 
 ```shell
 [root@qfedu.com ~]# vim /etc/httpd/conf.d/test.conf
@@ -234,13 +234,13 @@ ServerName test.soso666.com
 访问：www.soso666.com
 ```
 
-![image-20200806211538434](D:\图片\typora\image-20200806211538434.png)
+![image-20200806211538434](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211538434.png?raw=true)
 
 ```shell
 访问: test.soso666.com:81
 ```
 
-![image-20200806211455003](D:\图片\typora\image-20200806211455003.png)
+![image-20200806211455003](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211455003.png?raw=true)
 
 ```shell
 3.基于IP
@@ -273,9 +273,9 @@ ServerName test.soso666.com
 可以配置本地解析也可以不配置本地解析
 ```
 
-![image-20200806212232477](D:\图片\typora\image-20200806212232477.png)
+![image-20200806212232477](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806212232477.png?raw=true)
 
-![image-20200806212212299](D:\图片\typora\image-20200806212212299.png)
+![image-20200806212212299](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806212212299.png?raw=true)
 
 # Construction and configuration of Nginx service
 
@@ -335,7 +335,7 @@ ETag: "5da0250d-27b"
 Accept-Ranges: bytes
 ```
 
-![image-20191116185020795](D:\图片\typora\image-20191116185020795.png)
+![image-20191116185020795](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20191116185020795.png?raw=true)
 
 ```shell
 [root@cainana ~]# vim /etc/nginx/nginx.conf
