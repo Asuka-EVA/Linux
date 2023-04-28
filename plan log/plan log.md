@@ -202,6 +202,16 @@ include /etc/logrotate.d  			 #包含该目录下的配置文件,会引用该目
 # ssh-remote management service
 
 ```shell
+ssh无密码登陆步骤：
+1、ssh-keygen产生公钥和私钥
+2、拷贝公钥给对方的机器   ssh 10.8.152.118
+
+修改端口号的步骤：
+1、vim /etc/ssh/sshd_config
+2、#Port 22   #将注释去掉，修改端口号可以修改为自定义的。    65535范围内
+```
+
+```shell
 1、安装
 [root@linux-server ~]# yum install -y openssh*
 1.服务器端启动服务：
