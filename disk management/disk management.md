@@ -1,6 +1,14 @@
 # disk basic partition
 
 ```shell
+步骤：
+1、首先添加磁盘
+2、fisk做磁盘分区、gdisk磁盘分区
+3、分区的磁盘格式化
+4、创建挂载点目录，并挂载
+```
+
+```shell
 1、首先需要先给虚拟机添加磁盘            步骤：分区。格式化。挂载。
 [root@qfedu.com ~]# ll /dev/sd*
 brw-rw----. 1 root disk 8,  0 Nov  7 23:15 /dev/sda
@@ -31,6 +39,8 @@ fdisk /dev/sdb     #通过fdisk[磁盘名称]对制定的磁盘分区
 # partprobe /dev/sdb
 ```
 
+![image-20230428144835819](assets/image-20230428144835819.png)
+
 ```shell
 3、gdisk
 GPT  128个主分区
@@ -39,6 +49,8 @@ GPT  128个主分区
 [root@qfedu.com ~]# gdisk -l /dev/sdb
 [root@qfedu.com ~]# gdisk /dev/sdb
 ```
+
+![image-20230428144857518](assets/image-20230428144857518.png)
 
 ```shell
 4、创建文件系统(格式化)centos7默认使用xfs
@@ -83,6 +95,24 @@ tmpfs                   tmpfs     199M     0  199M   0% /run/user/0
 
 # fstab-Automatically mount at boot
 
+```
+fstab开机自动挂载步骤：
+ext4格式
+1、查看uuidb    命令：blkid /etc/sdb1
+2、打开配置文件vim /etc/fstab
+3、输入uuid   挂载点    ext4    defaults    0 0
+
+xfs格式：
+1、查看uuidb    命令：blkid /etc/sdb1
+2、打开配置文件   vim /etc/fstab
+3、输入 /dev/sdc2       /mnt/disks      xfs     defaults        0 0
+
+开机自动挂载
+1、打开配置文件
+2、输入  mount  挂载设备+挂载点
+3、添加执行权限
+```
+
 ```shell
 /etc/fstab文件实现开机的时候自动挂载
 [root@qfedu.com ~]# blkid /dev/sdb1  #查看uuid和文件系统类型
@@ -99,7 +129,7 @@ tmpfs                   tmpfs     199M     0  199M   0% /run/user/0
 第6列:是否检查文件系统：0 不检查
 ```
 
-![image-20191108154554145.png](https://github.com/Asuka-EVA/Linux/blob/main/disk%20management/assets/image-20191108154554145.png?raw=true)
+![image-20191108154554145](D:\图片\typora\image-20191108154554145.png)
 
 ```shell
 [root@qfedu.com ~]# mount -a #自动挂载
@@ -121,7 +151,7 @@ xfs格式
 [root@qfedu.com ~]# vim /etc/rc.d/rc.local #将挂载命令直接写到文件中
 ```
 
-![image-20191108155316602](https://github.com/Asuka-EVA/Linux/blob/main/disk%20management/assets/image-20191108155316602.png?raw=true)
+![image-20191108155316602](D:\图片\typora\image-20191108155316602.png)
 
 ```shell
 [root@qfedu.com ~]# chmod +x /etc/rc.d/rc.local #添加执行权限
@@ -131,7 +161,14 @@ xfs格式
 # Logical Volume Manager
 
 ```shell
-1、创建lvm
+逻辑卷lvm步骤：
+1、创建pv  yum  -y  install lvm2
+2、创建vg
+3、创建lv
+4、格式化并挂载
+```
+
+```shell
 首先准备添加3块磁盘：可以是/dev/sdb这种没有分区的也可以是/dev/sdb1这种已经分区了的
 注意：如果没有pv命令安装 #yum install -y lvm2
 [root@linux-server ~]# ll /dev/sd*
@@ -144,7 +181,7 @@ brw-rw----. 1 root disk 8, 48 Nov  9 14:04 /dev/sdd
 ```
 
 ```shell
-2、创建pv
+1、创建pv
 [root@linux-server ~]# pvcreate /dev/sdb #创建pv
   Physical volume "/dev/sdb" successfully created.
 [root@linux-server ~]# pvs  #查看pv
@@ -157,7 +194,7 @@ brw-rw----. 1 root disk 8, 48 Nov  9 14:04 /dev/sdd
 ```
 
 ```shell
-3、创建vg
+2、创建vg
 [root@linux-server ~]# vgcreate vg1 /dev/sdb   #创建vg
   Volume group "vg1" successfully created
 参数解释：
@@ -194,7 +231,7 @@ brw-rw----. 1 root disk 8, 48 Nov  9 14:04 /dev/sdd
 ```
 
 ```shell
-4、创建lv
+3、创建lv
 [root@linux-server ~]# lvcreate -L 150M -n lv1 vg1  #创建lv
   Rounding up size to full physical extent 152.00 MiB
   Logical volume "lv1" created.
@@ -213,7 +250,7 @@ brw-rw----. 1 root disk 8, 48 Nov  9 14:04 /dev/sdd
 ```
 
 ```shell
-5、制作文件系统并挂载
+4、制作文件系统并挂载
 [root@linux-server ~]# mkfs.xfs /dev/vg1/lv1
 [root@linux-server ~]# mkfs.ext4 /dev/vg1/lv2
 [root@linux-server ~]# mkdir /mnt/lv{1..2}
@@ -226,6 +263,11 @@ Filesystem              Type      Size  Used Avail Use% Mounted on
 ```
 
 # LVM expansion
+
+```shell
+扩大VG步骤：
+创建pv再进行扩容、如果lv所在的vg有空间直接扩容
+```
 
 ```shell
 #注意：如果lv所在的vg有空间直接扩容就ok了！
@@ -283,6 +325,13 @@ Filesystem              Type      Size  Used Avail Use% Mounted on
 ```
 
 # swap partition
+
+```shell
+步骤：
+1、增加交换分区可以是基本分区 LVM，file
+2、初始化
+3、挂载
+```
 
 ```shell
 1、查看当前的交换分区
@@ -375,6 +424,13 @@ Filesystem              Type      Size  Used Avail Use% Mounted on
 ```
 
 # lv-remove
+
+```shell
+步骤：
+1、移除lv
+2、移除vg
+3、移除pv物理卷
+```
 
 ```shell
 [root@localhost ~]# lvremove /dev/vg2/lv2

@@ -53,6 +53,12 @@ DirectoryIndex index.html      		# 定义主页文件，当访问到网站目录
 ## Access control
 
 ```shell
+访问控制步骤：
+1、vim  /etc/httpd/conf/httpd.conf
+2、修改参数(允许所有主机访问、只拒绝一部分访问、拒绝所有人访问)
+```
+
+```shell
 准备测试页面
 [root@qfedu.com ~]# echo test1 > /var/www/html/index.html #编写测试文件
 ```
@@ -280,6 +286,13 @@ ServerName test.soso666.com
 # Construction and configuration of Nginx service
 
 ## nginx install
+
+```shell
+安装步骤：
+1、检查防火墙
+2、配置yum源
+3、清理缓存，建立缓存
+```
 
 ```shell
 获取Nginx
