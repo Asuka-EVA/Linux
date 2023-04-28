@@ -1,6 +1,16 @@
 # Build NFS remote shared storage
 
 ```shell
+步骤：
+server端：
+1、安装rpc协议包，安装nfs服务，提供文件系统
+2、vim /etc/exports   编辑共享文件
+client端：
+1、安装rpc协议包，安装nfs服务，提供文件系统
+2、nfs+ip进行挂载
+```
+
+```shell
 centos7（服务端和客户端都关闭防火墙和selinux内核防火墙）
 
 #systemctl stop firewalld
@@ -64,6 +74,15 @@ index.html
 ```
 
 # Vsftp configuration
+
+```shell
+步骤：
+server端：
+1、安装vsftpd
+2、编辑配置文件(允许用户上传文件，创建目录，对目录进行操作)
+client端：
+安装lftp、lftp+server ip进行登陆
+```
 
 ```shell
 FTP Server（服务端）
