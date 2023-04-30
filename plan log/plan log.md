@@ -42,13 +42,13 @@ uid=1007(jack) gid=1012(jack) groups=1012(jack)
 
 ```shell
 安装软件
-    [root@qfedu.com ~]#  yum -y install crontabs  #如果软件不存在安装
+    [root@Asuka ~]#  yum -y install crontabs  #如果软件不存在安装
 
 启动服务
     rhel7:
-    [root@qfedu.com ~]#  systemctl start crond.service
-    [root@qfedu.com ~]#  systemctl status crond.service
-    [root@qfedu.com ~]#  systemctl enable crond.service
+    [root@Asuka ~]#  systemctl start crond.service
+    [root@Asuka ~]#  systemctl status crond.service
+    [root@Asuka ~]#  systemctl enable crond.service
 [root@linux-server ~]# systemctl status crond.service  #查看服务状态
 
 [root@linux-server ~]# ps -ef | grep crond 

@@ -55,22 +55,22 @@ no_root_squash：使用分享目录的使用者，如果是 root 的话，那么
 web1  客户端操作
 [root@web1 ~]# yum -y install rpcbind
 [root@web1 ~]# yum -y install nfs-utils
-[root@web1 ~]# mkdir /qf #创建挂载点
-[root@web1 ~]# mount -t nfs 192.168.246.160:/nfs-dir /qf  #挂载
+[root@web1 ~]# mkdir /asuka #创建挂载点
+[root@web1 ~]# mount -t nfs 192.168.246.160:/nfs-dir /asuka  #挂载
 [root@web1 ~]# df -Th
 Filesystem               Type      Size  Used Avail Use% Mounted on
 /dev/mapper/centos-root  xfs        17G  1.1G   16G   7% /
 tmpfs                    tmpfs      98M     0   98M   0% /run/user/0
-192.168.246.160:/nfs-dir nfs4       17G  1.4G   16G   8% /qf
-[root@web1 ~]# ls /qf
+192.168.246.160:/nfs-dir nfs4       17G  1.4G   16G   8% /asuka
+[root@web1 ~]# ls /asuka
 index.html
-[root@web1 ~]# umount /qf  #取消挂载
+[root@web1 ~]# umount /asuka  #取消挂载
 
 
 制作开机挂载
-[root@client.qfedu.com ~]# vim /etc/fstab
-192.168.246.160:/nfs-dir    /qf          nfs     defaults        0 0
-[root@client.qfedu.com ~]# mount -a
+[root@client.asukaedu.com ~]# vim /etc/fstab
+192.168.246.160:/nfs-dir    /asuka          nfs     defaults        0 0
+[root@client.asukaedu.com ~]# mount -a
 ```
 
 # Vsftp configuration

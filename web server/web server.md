@@ -3,12 +3,12 @@
 ## apache install
 
 ```shell
-[root@qfedu.com ~]# systemctl stop firewalld
-[root@qfedu.com ~]# systemctl disable firewalld
-[root@qfedu.com ~]# setenforce 0
-[root@qfedu.com ~]# yum install -y httpd
-[root@qfedu.com ~]# systemctl start httpd
-[root@qfedu.com ~]# netstat -lntp | grep 80 #查看apache端口
+[root@Asuka ~]# systemctl stop firewalld
+[root@Asuka ~]# systemctl disable firewalld
+[root@Asuka ~]# setenforce 0
+[root@Asuka ~]# yum install -y httpd
+[root@Asuka ~]# systemctl start httpd
+[root@Asuka ~]# netstat -lntp | grep 80 #查看apache端口
 tcp6       0      0 :::80                   :::*                    LISTEN      2776/httpd
 #端口80.可以改
 ```
@@ -60,31 +60,31 @@ DirectoryIndex index.html      		# 定义主页文件，当访问到网站目录
 
 ```shell
 准备测试页面
-[root@qfedu.com ~]# echo test1 > /var/www/html/index.html #编写测试文件
+[root@Asuka ~]# echo test1 > /var/www/html/index.html #编写测试文件
 ```
 
 ```shell
 访问控制页面
 可以直接编辑apache主配置文件
 1.默认允许所有主机访问
-[root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf
+[root@Asuka ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
 ![image-20200806202746369](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806202746369.png?raw=true)
 
 ```shell
-[root@qfedu.com ~]# systemctl restart httpd
+[root@Asuka ~]# systemctl restart httpd
 ```
 
 ```shell
 2.只拒绝一部分客户端访问:
-[root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf
+[root@Asuka ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
 ![image-20200806210039708](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806210039708.png?raw=true)
 
 ```shell
-[root@qfedu.com ~]# systemctl restart httpd
+[root@Asuka ~]# systemctl restart httpd
 ```
 
 ![image-20200806203546116](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806203546116.png?raw=true)
@@ -113,13 +113,13 @@ Content-Type: text/html; charset=UTF-8
 
 ```
 3、拒绝所有人
-[root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf
+[root@Asuka ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
 ![image-20200806205725058](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806205725058.png?raw=true)
 
 ```shell
-[root@qfedu.com ~]# systemctl restart httpd
+[root@Asuka ~]# systemctl restart httpd
 ```
 
 ![image-20200806203546116](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806203546116-16816495535891.png?raw=true)
@@ -135,13 +135,13 @@ Content-Type: text/html; charset=iso-8859-1
 ## Modify the default website publishing directory
 
 ```shell
-[root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf
+[root@Asuka ~]# vim /etc/httpd/conf/httpd.conf
 119  DocumentRoot "/www"            							# 修改网站根目录为/www
 131  <Directory "/www">               							# 把这个也对应的修改为/www
 
-[root@qfedu.com ~]# mkdir /www    ##创建定义的网站发布目录
-[root@qfedu.com ~]# echo "这是新修改的网站家目录/www" > /www/index.html #创建测试页面
-[root@qfedu.com ~]# systemctl restart httpd      #重启服务
+[root@Asuka ~]# mkdir /www    ##创建定义的网站发布目录
+[root@Asuka ~]# echo "这是新修改的网站家目录/www" > /www/index.html #创建测试页面
+[root@Asuka ~]# systemctl restart httpd      #重启服务
 ```
 
 ![image-20200806204634696](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806204634696.png?raw=true)
@@ -155,9 +155,9 @@ Content-Type: text/html; charset=iso-8859-1
 
 ```shell
 1.基于域名
-[root@qfedu.com ~]# cd /etc/httpd/conf.d/
-[root@qfedu.com conf.d]# touch www.tianbao.com.conf
-[root@qfedu.com conf.d]# vim www.tianbao.com.conf
+[root@Asuka ~]# cd /etc/httpd/conf.d/
+[root@Asuka conf.d]# touch www.tianbao.com.conf
+[root@Asuka conf.d]# vim www.tianbao.com.conf
 <VirtualHost *:80>   #指定虚拟主机端口，*代表监听本机所有ip，也可以指定ip
 DocumentRoot /tianbao     #指定发布网站目录，自己定义
 ServerName www.tianbao.com  #指定域名，可以自己定义
@@ -187,11 +187,11 @@ ServerName test.soso666.com
   Require all granted
 </Directory>
 </VirtualHost>
-[root@qfedu.com ~]# mkdir /soso #创建发布目录
-[root@qfedu.com ~]# mkdir /soho
-[root@qfedu.com ~]# echo qianfen > /soso/index.html #创建测试页面
-[root@qfedu.com ~]# echo qfedu > /soho/index.html
-[root@qfedu.com ~]# systemctl restart httpd
+[root@Asuka ~]# mkdir /soso #创建发布目录
+[root@Asuka ~]# mkdir /soho
+[root@Asuka ~]# echo qianfen > /soso/index.html #创建测试页面
+[root@Asuka ~]# echo qfedu > /soho/index.html
+[root@Asuka ~]# systemctl restart httpd
 ```
 
 ```shell
@@ -208,13 +208,13 @@ ServerName test.soso666.com
 
 ```shell
 2、基于端口
-[root@qfedu.com ~]# vim /etc/httpd/conf/httpd.conf  ---添加
+[root@Asuka ~]# vim /etc/httpd/conf/httpd.conf  ---添加
 ```
 
 ![image-20200806210650822](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806210650822.png?raw=true)
 
 ```shell
-[root@qfedu.com ~]# vim /etc/httpd/conf.d/test.conf
+[root@Asuka ~]# vim /etc/httpd/conf.d/test.conf
 <VirtualHost *:80>
   DocumentRoot /soso
   ServerName www.soso666.com
@@ -232,7 +232,7 @@ ServerName test.soso666.com
   Require all granted
 </Directory>
 </VirtualHost>
-[root@qfedu.com ~]# systemctl restart httpd
+[root@Asuka ~]# systemctl restart httpd
 注意：解析并没有变
 ```
 
@@ -250,8 +250,8 @@ ServerName test.soso666.com
 
 ```shell
 3.基于IP
-[root@qfedu.com ~]# ifconfig ens33:0 192.168.153.123  #添加一个临时ip
-[root@qfedu.com ~]# vim /etc/httpd/conf.d/test.conf
+[root@Asuka ~]# ifconfig ens33:0 192.168.153.123  #添加一个临时ip
+[root@Asuka ~]# vim /etc/httpd/conf.d/test.conf
 <VirtualHost 192.168.153.144:80>   #指定ip
   DocumentRoot /soso
   ServerName www.soso666.com
@@ -269,7 +269,7 @@ ServerName test.soso666.com
   Require all granted
 </Directory>
 </VirtualHost>
-[root@qfedu.com ~]# systemctl restart httpd
+[root@Asuka ~]# systemctl restart httpd
 
 #取消添加的ip地址
 #ifconfig ens33:0 192.168.153.123 down
@@ -301,30 +301,30 @@ Nginx的官方主页： http://nginx.org
 
 ```shell
 关闭防火墙关闭selinux
-[root@qfedu.com ~]# systemctl stop firewalld  #关闭防火墙
-[root@qfedu.com ~]# systemctl disable firewalld #开机关闭防火墙
-[root@qfedu.com ~]# setenforce 0  #临时关闭selinux
-[root@qfedu.com ~]# getenforce   #查看selinux状态
+[root@Asuka ~]# systemctl stop firewalld  #关闭防火墙
+[root@Asuka ~]# systemctl disable firewalld #开机关闭防火墙
+[root@Asuka ~]# setenforce 0  #临时关闭selinux
+[root@Asuka ~]# getenforce   #查看selinux状态
 
 Nginx安装:
 Yum方式：
-[root@qfedu.com ~]# cd /etc/yum.repos.d/
-[root@qfedu.com yum.repos.d]# vi nginx.repo  #编写nginx的yum源
+[root@Asuka ~]# cd /etc/yum.repos.d/
+[root@Asuka yum.repos.d]# vi nginx.repo  #编写nginx的yum源
 [nginx]
 name=nginx
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
 gpgcheck=0
 enabled=1
-[root@qfedu.com yum.repos.d]# yum clean all
-[root@qfedu.com yum.repos.d]# yum makecache
-[root@qfedu.com ~]# yum install -y nginx  #安装nginx
+[root@Asuka yum.repos.d]# yum clean all
+[root@Asuka yum.repos.d]# yum makecache
+[root@Asuka ~]# yum install -y nginx  #安装nginx
 ```
 
 ```shell
-[root@qfedu.com ~]# systemctl start nginx  #启动
-[root@qfedu.com ~]# systemctl restart nginx #重启
-[root@qfedu.com ~]# systemctl enable nginx  #开机启动
-[root@qfedu.com ~]# systemctl stop nginx  #关闭
+[root@Asuka ~]# systemctl start nginx  #启动
+[root@Asuka ~]# systemctl restart nginx #重启
+[root@Asuka ~]# systemctl enable nginx  #开机启动
+[root@Asuka ~]# systemctl stop nginx  #关闭
 ```
 
 ```shell
@@ -332,11 +332,11 @@ enabled=1
 nginx      3928  0.0  0.1  46792  1932 ?        S    18:46   0:00 nginx: worker process
 root       3932  0.0  0.0 112660   968 pts/1    R+   18:47   0:00 grep --color=auto nginx
 2.查看nginx端口
-[root@qfedu.com ~]# netstat -lntp | grep 80
+[root@Asuka ~]# netstat -lntp | grep 80
 tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      3927/nginx: master
 #注意：nginx默认端口为80
 3.测试主页是否可以访问：
-[root@qfedu.com ~]# curl -I http://127.0.0.1
+[root@Asuka ~]# curl -I http://127.0.0.1
 HTTP/1.1 200 OK
 Server: nginx/1.16.1
 Date: Sat, 16 Nov 2019 10:49:48 GMT

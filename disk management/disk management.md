@@ -10,13 +10,13 @@
 
 ```shell
 1、首先需要先给虚拟机添加磁盘            步骤：分区。格式化。挂载。
-[root@qfedu.com ~]# ll /dev/sd*
+[root@Asuka ~]# ll /dev/sd*
 brw-rw----. 1 root disk 8,  0 Nov  7 23:15 /dev/sda
 brw-rw----. 1 root disk 8,  1 Nov  7 23:15 /dev/sda1
 brw-rw----. 1 root disk 8,  2 Nov  7 23:15 /dev/sda2
 brw-rw----. 1 root disk 8, 16 Nov  7 23:15 /dev/sdb
 brw-rw----. 1 root disk 8, 32 Nov  7 23:15 /dev/sdc
-[root@qfedu.com ~]# lsblk  #查看磁盘设备
+[root@Asuka ~]# lsblk  #查看磁盘设备
 NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda               8:0    0   20G  0 disk 
 ├─sda1            8:1    0    1G  0 part /boot
@@ -31,7 +31,7 @@ sdc               8:32   0    8G  0 disk
 2、fdisk
 MBR   14个分区（4个主分区，扩展分区，逻辑分区）
 
-[root@qfedu.com ~]# fdisk -l /dev/sdb #查看磁盘分区信息
+[root@Asuka ~]# fdisk -l /dev/sdb #查看磁盘分区信息
 fdisk /dev/sdb     #通过fdisk[磁盘名称]对制定的磁盘分区
 
 # lsblk 查看分区结果
@@ -45,33 +45,33 @@ fdisk /dev/sdb     #通过fdisk[磁盘名称]对制定的磁盘分区
 3、gdisk
 GPT  128个主分区
 创建分区
-[root@qfedu.com ~]# yum -y install gdisk  #安装分区工具
-[root@qfedu.com ~]# gdisk -l /dev/sdb
-[root@qfedu.com ~]# gdisk /dev/sdb
+[root@Asuka ~]# yum -y install gdisk  #安装分区工具
+[root@Asuka ~]# gdisk -l /dev/sdb
+[root@Asuka ~]# gdisk /dev/sdb
 ```
 
 ![image-20230428144857518](assets/image-20230428144857518.png)
 
 ```shell
 4、创建文件系统(格式化)centos7默认使用xfs
-[root@qfedu.com ~]# mkfs.ext4 /dev/sdb1   #格式化成ext4格式的文件系统
-[root@qfedu.com ~]# mkfs.xfs /dev/sdc2   #格式化成xfs格式的文件系统
+[root@Asuka ~]# mkfs.ext4 /dev/sdb1   #格式化成ext4格式的文件系统
+[root@Asuka ~]# mkfs.xfs /dev/sdc2   #格式化成xfs格式的文件系统
 ```
 
 ```shell
 5、挂载mount使用
-[root@qfedu.com ~]# mkdir /mnt/disk1   #创建挂载目录
-[root@qfedu.com ~]# mkdir /mnt/disks   #创建挂载目录
-[root@qfedu.com ~]# mount -o rw /dev/sdb1 /mnt/disk1/  #-o 指定读写权限（ro只读，rx读写）
+[root@Asuka ~]# mkdir /mnt/disk1   #创建挂载目录
+[root@Asuka ~]# mkdir /mnt/disks   #创建挂载目录
+[root@Asuka ~]# mount -o rw /dev/sdb1 /mnt/disk1/  #-o 指定读写权限（ro只读，rx读写）
 mount参数:
 -o 指定读写权限
 -a 需要定义(/etc/fstab)执行-a才会自动挂载
-[root@qfedu.com ~]# mount /dev/sdc2 /mnt/disks/
+[root@Asuka ~]# mount /dev/sdc2 /mnt/disks/
 ```
 
 ```shell
 6、查看磁盘挂载与磁盘使用空间
-[root@qfedu.com ~]# df -Th
+[root@Asuka ~]# df -Th
 Filesystem              Type      Size  Used Avail Use% Mounted on
 /dev/mapper/centos-root xfs        17G  1.2G   16G   7% /
 devtmpfs                devtmpfs  982M     0  982M   0% /dev
@@ -89,8 +89,8 @@ tmpfs                   tmpfs     199M     0  199M   0% /run/user/0
 
 ```shell
 7、取消挂载
-[root@qfedu.com ~]# umount /mnt/disks/
-[root@qfedu.com ~]# umount -l /mnt/disk1/ #强行卸载，即使目录有资源被进程占用，也可以卸载
+[root@Asuka ~]# umount /mnt/disks/
+[root@Asuka ~]# umount -l /mnt/disk1/ #强行卸载，即使目录有资源被进程占用，也可以卸载
 ```
 
 # fstab-Automatically mount at boot
@@ -115,9 +115,9 @@ xfs格式：
 
 ```shell
 /etc/fstab文件实现开机的时候自动挂载
-[root@qfedu.com ~]# blkid /dev/sdb1  #查看uuid和文件系统类型
+[root@Asuka ~]# blkid /dev/sdb1  #查看uuid和文件系统类型
 /dev/sdb1: UUID="d1916638-bd0a-4474-8051-f788116a3a92" TYPE="ext4"
-[root@qfedu.com ~]# vim /etc/fstab
+[root@Asuka ~]# vim /etc/fstab
 参数解释：
 第1列:挂载设备
 (1)/dev/sda5  
@@ -132,14 +132,14 @@ xfs格式：
 ![image-20191108154554145](assets/image-20191108154554145.png)
 
 ```shell
-[root@qfedu.com ~]# mount -a #自动挂载
+[root@Asuka ~]# mount -a #自动挂载
 ```
 
 ```shell
 xfs格式
-[root@qfedu.com ~]# vim /etc/fstab
+[root@Asuka ~]# vim /etc/fstab
 /dev/sdc2       /mnt/disks      xfs     defaults        0 0
-[root@qfedu.com ~]# mount -a
+[root@Asuka ~]# mount -a
 ```
 
 ```shell
@@ -148,14 +148,14 @@ xfs格式
 ```
 
 ```shell
-[root@qfedu.com ~]# vim /etc/rc.d/rc.local #将挂载命令直接写到文件中
+[root@Asuka ~]# vim /etc/rc.d/rc.local #将挂载命令直接写到文件中
 ```
 
 ![image-20191108155316602](assets/image-20191108155316602.png)
 
 ```shell
-[root@qfedu.com ~]# chmod +x /etc/rc.d/rc.local #添加执行权限
-[root@qfedu.com ~]# reboot
+[root@Asuka ~]# chmod +x /etc/rc.d/rc.local #添加执行权限
+[root@Asuka ~]# reboot
 ```
 
 # Logical Volume Manager
