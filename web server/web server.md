@@ -70,7 +70,7 @@ DirectoryIndex index.html      		# 定义主页文件，当访问到网站目录
 [root@Asuka ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
-![image-20200806202746369](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806202746369.png?raw=true)
+![image-20200806202746369](assets/web%20server/image-20200806202746369.png)
 
 ```shell
 [root@Asuka ~]# systemctl restart httpd
@@ -81,13 +81,13 @@ DirectoryIndex index.html      		# 定义主页文件，当访问到网站目录
 [root@Asuka ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
-![image-20200806210039708](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806210039708.png?raw=true)
+![image-20200806210039708](assets/web%20server/image-20200806210039708.png)
 
 ```shell
 [root@Asuka ~]# systemctl restart httpd
 ```
 
-![image-20200806203546116](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806203546116.png?raw=true)
+![image-20200806203546116](assets/web%20server/image-20200806203546116.png)
 
 ```shell
 [root@test ~]# curl -I http://192.168.153.144  #用另外一台机器测试访问成功
@@ -116,13 +116,13 @@ Content-Type: text/html; charset=UTF-8
 [root@Asuka ~]# vim /etc/httpd/conf/httpd.conf
 ```
 
-![image-20200806205725058](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806205725058.png?raw=true)
+![image-20200806205725058](assets/web%20server/image-20200806205725058.png)
 
 ```shell
 [root@Asuka ~]# systemctl restart httpd
 ```
 
-![image-20200806203546116](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806203546116-16816495535891.png?raw=true)
+![image-20200806203546116](assets/web%20server/image-20200806203546116-16816495535891.png)
 
 ```shell
 [root@test ~]# curl -I http://192.168.153.144
@@ -144,7 +144,7 @@ Content-Type: text/html; charset=iso-8859-1
 [root@Asuka ~]# systemctl restart httpd      #重启服务
 ```
 
-![image-20200806204634696](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806204634696.png?raw=true)
+![image-20200806204634696](assets/web%20server/image-20200806204634696.png)
 
 ## virtual host
 
@@ -198,20 +198,20 @@ ServerName test.soso666.com
 在wind电脑上面打开C:\Windows\System32\drivers\etc\hosts文件。可以用管理员身份打开
 ```
 
-![image-20200806211348899](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211348899.png?raw=true)
+![image-20200806211348899](assets/web%20server/image-20200806211348899.png)
 
 ```shell
 测试访问
 ```
 
-![image-20200806211329944](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211329944.png?raw=true)
+![image-20200806211329944](assets/web%20server/image-20200806211329944.png)
 
 ```shell
 2、基于端口
 [root@Asuka ~]# vim /etc/httpd/conf/httpd.conf  ---添加
 ```
 
-![image-20200806210650822](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806210650822.png?raw=true)
+![image-20200806210650822](assets/web%20server/image-20200806210650822.png)
 
 ```shell
 [root@Asuka ~]# vim /etc/httpd/conf.d/test.conf
@@ -240,13 +240,13 @@ ServerName test.soso666.com
 访问：www.soso666.com
 ```
 
-![image-20200806211538434](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211538434.png?raw=true)
+![image-20200806211538434](assets/web%20server/image-20200806211538434.png)
 
 ```shell
 访问: test.soso666.com:81
 ```
 
-![image-20200806211455003](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806211455003.png?raw=true)
+![image-20200806211455003](assets/web%20server/image-20200806211455003.png)
 
 ```shell
 3.基于IP
@@ -279,9 +279,9 @@ ServerName test.soso666.com
 可以配置本地解析也可以不配置本地解析
 ```
 
-![image-20200806212232477](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806212232477.png?raw=true)
+![image-20200806212232477](assets/web%20server/image-20200806212232477.png)
 
-![image-20200806212212299](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20200806212212299.png?raw=true)
+![image-20200806212212299](assets/web%20server/image-20200806212212299.png)
 
 # Construction and configuration of Nginx service
 
@@ -348,7 +348,7 @@ ETag: "5da0250d-27b"
 Accept-Ranges: bytes
 ```
 
-![image-20191116185020795](https://github.com/Asuka-EVA/Linux/blob/main/web%20server/assets/image-20191116185020795.png?raw=true)
+![image-20191116185020795](assets/web%20server/image-20191116185020795.png)
 
 ```shell
 [root@cainana ~]# vim /etc/nginx/nginx.conf
