@@ -39,7 +39,7 @@ fdisk /dev/sdb     #通过fdisk[磁盘名称]对制定的磁盘分区
 # partprobe /dev/sdb
 ```
 
-![image-20230428144835819](assets/image-20230428144835819.png)
+![image-20230428144835819](assets/disk%20management/image-20230428144835819.png)
 
 ```shell
 3、gdisk
@@ -50,7 +50,7 @@ GPT  128个主分区
 [root@Asuka ~]# gdisk /dev/sdb
 ```
 
-![image-20230428144857518](assets/image-20230428144857518.png)
+![image-20230428144857518](assets/disk%20management/image-20230428144857518.png)
 
 ```shell
 4、创建文件系统(格式化)centos7默认使用xfs
@@ -129,7 +129,7 @@ xfs格式：
 第6列:是否检查文件系统：0 不检查
 ```
 
-![image-20191108154554145](assets/image-20191108154554145.png)
+![image-20191108154554145](assets/disk%20management/image-20191108154554145.png)
 
 ```shell
 [root@Asuka ~]# mount -a #自动挂载
@@ -151,7 +151,7 @@ xfs格式
 [root@Asuka ~]# vim /etc/rc.d/rc.local #将挂载命令直接写到文件中
 ```
 
-![image-20191108155316602](assets/image-20191108155316602.png)
+![image-20191108155316602](assets/disk%20management/image-20191108155316602.png)
 
 ```shell
 [root@Asuka ~]# chmod +x /etc/rc.d/rc.local #添加执行权限
